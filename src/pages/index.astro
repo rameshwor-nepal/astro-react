@@ -1,15 +1,13 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
+import FilteredPokeman from "../components/FilteredPokeman";
 import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import PokemanCard from "../components/PokemanCard";
-import SearchInput from "../components/SearchInput";
 
 const response = await fetch("https://pokeapi.co/api/v2/pokemon/");
 const data = await response.json();
-
-console.log(data);
+const pokemons = data.results;
 ---
 
 <!doctype html>
@@ -20,10 +18,9 @@ console.log(data);
 	<body class="min-h-screen flex flex-col justify-between">
 		<Header />
 		<main class="bg-gradient-to-r from-slate-900 to-slate-700">
-			<div class="mt-10">
-				<SearchInput />
+			<div>
+				<FilteredPokeman client:load pokemons={pokemons || []} />
 			</div>
-			<PokemanCard data={data || []} />
 		</main>
 		<Footer />
 	</body>
