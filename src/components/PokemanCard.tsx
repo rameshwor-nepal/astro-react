@@ -10,7 +10,7 @@ const PokemanCard = ({ data }: PropsI) => {
                 (
                     data?.map((item: any, index: any) =>
                     (
-                        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-slate-50" key={index}>
+                        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-slate-50 transition-all hover:scale-[1.02]" key={index}>
                             <div className="flex flex-col items-center pb-10">
                                 <img className="w-24 h-24 mb-3 rounded-full shadow-lg bg-blue-50" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`} alt="" />
                                 <h5 className="mb-1 text-xl font-medium text-gray-900 ">{item.name}</h5>
